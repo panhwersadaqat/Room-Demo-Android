@@ -1,0 +1,21 @@
+package com.example.roomdemo
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.roomdemo.db.SubscriberRepository
+
+/**
+ * Created by Sadaqat Panhwer
+ * https://panhwersadaqat.github.io/
+ * on 12/28/21.
+ */
+
+class SubscriberViewModelFactory(private val repository: SubscriberRepository) : ViewModelProvider.Factory{
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if(modelClass.isAssignableFrom(SubscriberViewModel::class.java)){
+            return SubscriberViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel Class")
+
+    }
+}
